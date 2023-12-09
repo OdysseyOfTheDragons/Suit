@@ -16,7 +16,12 @@ EFLAGS=-static-libasan -lm -ledit
 
 # Sources
 MAIN=main.c
-CSRC=lib/common.c \
+CSRC=cli/colors/colors.c \
+	 cli/strings/strings.c \
+	 cli/options/options.c \
+	 cli/parser/parser.c \
+	 lib/common.c \
+	 lib/editline.c \
 	 lib/error.c
 OSRC=$(CSRC:.c=.o) $(MAIN:.c=.o)
 DSRC=$(CSRC:.c=.d) $(MAIN:.c=.d)

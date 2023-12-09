@@ -9,6 +9,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdint.h>
+#include <time.h>
 
 // Shorter unsigned int types
 typedef uint8_t u8;
