@@ -52,7 +52,7 @@ Mkfile.old
 dkms.conf
 
 # Personal: output program
-**/holypoly
+**/suit
 *.c~
 *.h~
 main.tar.gz

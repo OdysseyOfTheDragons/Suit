@@ -32,4 +32,7 @@ void delete_string(string * str);
 
 /// Trim whitespaces
 void trim_string(string * str);
+
+/// Trim whitespaces
+char *trim(char *str);
 #endif

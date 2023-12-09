@@ -6,6 +6,10 @@
 #define _VERSION "1.0.0"
 #define _AUTHOR "Alexandre Conseil"
 
+#define LICENSE_URL "https://raw.githubusercontent.com/OdysseyOfTheDragons/Suit/main/LICENSE"
+#define GITHUB_URL "https://github.com/OdysseyOfTheDragons/Suit/tree/main"
+#define PERSONAL_WEBSITE "https://alexandreconseil.fr"
+
 /// Print the version of the program
 void print_version()
 {
@@ -19,6 +23,12 @@ void print_author()
 {
 	print("[fg(green)]AUTHOR:[/fg(green)] ");
 	print(_AUTHOR);
+	print("\n");
+
+	print("\nGITHUB: ");
+	print(GITHUB_URL);
+	print("\nWEBSITE: ");
+	print(PERSONAL_WEBSITE);
 	print("\n");
 }
 
@@ -49,16 +59,30 @@ void print_header()
 	print("\n");
 
 	// Give help
-	print("Type 'help', 'version', 'author' or 'license' "
+	print("Type 'help', 'version', 'author'  or 'license' "
 	      "for more information.\n");
+	print("Type 'exit' to quit.\n");
+}
+
+/// Print the language help
+void print_help()
+{
+	print("[fg(blue)]HELP:[/fg(blue)]\n");
+	print("I am sorry to hear you need help...\n");
+	print("The language details can't be shown here,\n");
+	print("but you may read it here:\n\n");
+
+	print("[fg(blue)]LINK:[/fg(blue)] ");
+	print(GITHUB_URL);
+	print("\n");
 }
 
 /// Print the CLI help
-void print_help()
+void print_help_cli()
 {
 	print("[fg(blue)]HELP:[/fg(blue)] ");
 	print("CLI help input");
-	print("[/fg(blue)]\n");
+	print("\n");
 
 	print("Base command: ");
 	print("[program-name] [?file]\n\n");
@@ -73,9 +97,9 @@ void print_help()
 /// Print the license
 void print_license()
 {
-	print("[fg(blue)]LICENSE:[/fg(blue)] ");
+	print("\n[fg(blue)]LICENSE:[/fg(blue)] ");
 	print("GNU GENERAL PUBLIC LICENSE");
-	print("[/fg(blue)]\n\n\n");
+	print("[/fg(blue)]\n");
 
-	printf("Please read <LICENSE>\n");
+	printf("Please read <%s>\n", LICENSE_URL);
 }

@@ -11,8 +11,10 @@ WCOMMON=-Wshadow -Wdouble-promotion \
 WARNINGS=$(WERROR) $(WLEAK) $(WSTACK) $(WFORMAT) $(WCOMMON)
 
 # Flags
-FLAGS=-I. -g -Os -s -O3 $(WARNINGS)
-EFLAGS=-static-libasan -lm -ledit
+HELP=-g
+BUILD=-I. -Os -s -O3
+FLAGS=$(BUILD) $(WARNINGS) $(HELP)
+EFLAGS=-lm -ledit
 
 # Sources
 MAIN=main.c
@@ -22,7 +24,10 @@ CSRC=cli/colors/colors.c \
 	 cli/parser/parser.c \
 	 lib/common.c \
 	 lib/editline.c \
-	 lib/error.c
+	 lib/error.c \
+	 maths/maths.c \
+	 polynomials/polynomials.c \
+	 store/store.c
 OSRC=$(CSRC:.c=.o) $(MAIN:.c=.o)
 DSRC=$(CSRC:.c=.d) $(MAIN:.c=.d)
 HSRC=$(CSRC:.c=.h)
@@ -38,24 +43,32 @@ all: format $(OUT) run
 	@$(CC) $(FLAGS) -o $@ -c $< $(EFLAGS)
 
 %.d: %.c
-	@$(CC) $(FLAGS) -MM -MD -o $@ $<
+	@$(CC) $(FLAGS) -MM -MD -o $@ $< $(EFLAGS)
 
 $(OUT): $(OSRC)
 	@$(CC) $(FLAGS) -o $@ $+ $(EFLAGS)
 
+.PHONY: release
+release:
+	@make $(OUT) FLAGS='$(BUILD)'
+
 run:
 	@./build/suit
 
+# Beauty of the code
 format: $(CSRC) $(HSRC)
 	@indent -linux $^
 
+# Testing for memory leaks
 valgrind: $(OUT)
 	@valgrind -s --tool=memcheck --leak-check=full --show-leak-kinds=all --leak-resolution=high --track-origins=yes --vgdb=yes $(OUT)
 
+# Clean architecture
 .PHONY: clean
 clean:
 	@rm -f main $(OSRC) $(DSRC) *.i *.s
 
+# Archive project
 .PHONY: archive
 archive: format
 	@-tar -zcf main.tar.gz Makefile docs/ $(SRC) $(HSRC)

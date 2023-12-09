@@ -125,3 +125,26 @@ void trim_string(string * str)
 
 	free(new_str);
 }
+
+char *trim(char *str)
+{
+	int length = strlen(str);
+
+	// The +1 is needed in case there are no whitespaces
+	// and there is a need for a bonus '\0'
+	char *s = (char *)malloc((length + 1) * sizeof(char));
+	int cursor = 0;
+
+	char current;
+	for (int i = 0; i < length; i++) {
+		current = str[i];
+
+		if (current >= 31) {
+			s[cursor++] = current;
+		}
+	}
+
+	s[cursor] = '\0';
+
+	return s;
+}
