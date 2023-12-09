@@ -97,7 +97,7 @@ void print_help_cli()
 /// Print the license
 void print_license()
 {
-	print("\n[fg(blue)]LICENSE:[/fg(blue)] ");
+	print("[fg(blue)]LICENSE:[/fg(blue)] ");
 	print("GNU GENERAL PUBLIC LICENSE");
 	print("[/fg(blue)]\n");
 

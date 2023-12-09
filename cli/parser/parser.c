@@ -4,9 +4,13 @@
 #include "cli/colors/colors.h"
 #include "cli/strings/strings.h"
 #include "cli/options/options.h"
+#include "store/store.h"
 
 void parse()
 {
+	// Create a vector to store all following polynomials
+	vector *store = create_vector();
+
 	// Infinite loop
 	while (true) {
 		// Get user input
@@ -18,9 +22,11 @@ void parse()
 		char *trimmed = trim(input);
 		if (strcmp(trimmed, "exit") == 0) {
 			// TODO: empty all stores
+			delete_vector(store);
 			free(trimmed);
 			free(input);
-			break;
+
+			return;
 		} else if (strcmp(trimmed, "author") == 0) {
 			print_author();
 		} else if (strcmp(trimmed, "help") == 0) {
@@ -36,4 +42,6 @@ void parse()
 		free(trimmed);
 		free(input);
 	}
+
+	delete_vector(store);
 }

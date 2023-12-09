@@ -38,7 +38,7 @@ polynomial *create_polynomial(int length, int *coefficients)
 /// Delete a polynomial, to prevent memory leaks
 ///
 /// \param p The polynomial
-void delete_polynomial(polynomial * p)
+void delete_p(polynomial * p)
 {
 	free(p->coefficients);
 	free(p);

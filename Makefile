@@ -12,8 +12,8 @@ WARNINGS=$(WERROR) $(WLEAK) $(WSTACK) $(WFORMAT) $(WCOMMON)
 
 # Flags
 HELP=-g
-BUILD=-I. -Os -s -O3
-FLAGS=$(BUILD) $(WARNINGS) $(HELP)
+BUILD=-I. -Os -s -O3 $(HELP)
+FLAGS=$(BUILD) $(WARNINGS)
 EFLAGS=-lm -ledit
 
 # Sources
