@@ -159,7 +159,7 @@ $ f is defined by create (1)
 If you do not understand why these definitions are invalid, please read one
 more time the definition of the grammar.
 
-#### print
+#### `print`
 
 This may seem strange to put this function at the beginning, but this function
 is useful to understand a lot of the functionalities of the language.
@@ -181,5 +181,28 @@ $ define p = create (0 1 1)
 $ print (p)
 $ print string ("The parentheses and quotes are needed.")
 $ print string ("I included the define line, as it shows the `print`")
-$ print string ("needs an already defined polynomial to print it.')
+$ print string ("needs an already defined polynomial to print it.")
+```
+
+This will produce the following output:
+```bash
+POLYNOMIAL: p = x^2 + x
+POLYNOMIAL: p = x^2 + x
+The parentheses and quotes are needed.
+I included the define line, as it shows the `print`
+needs an already defined polynomial to print it.
+```
+
+(the first line is the output from the `define` call)
+
+Using the modifiers, the output can be changed:
+```c
+$ @beauty_print
+$ @no_extra
+$ define p = create (0 1 1)
+$ print (p)
+```
+gives the output
+```bash
+x^2 + x
 ```
